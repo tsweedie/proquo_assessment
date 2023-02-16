@@ -1,18 +1,18 @@
 import os
 import sys
-
 import pandas as pd
 from datetime import datetime
 from datetime import date
 
 
-def calculate_age(born):
+def calculate_age(born: str) -> int:
     born = datetime.strptime(born, '%d-%m-%Y').date()
     today = date.today()
-    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+    age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+    return age
 
 
-def process_file(filename):
+def process_file(filename: str):
     if not os.path.exists(filename):
         raise FileNotFoundError
 
@@ -31,5 +31,3 @@ if __name__ == '__main__':
         print("not enough arguments to run program, please specify filename")
     except FileNotFoundError:
         print('file \'%s\' doesn\'t exist' % sys.argv[1])
-
-# python file_reading.py data/dob.txt

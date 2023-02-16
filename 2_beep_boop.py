@@ -18,4 +18,3 @@ def beep_boop():
 if __name__ == '__main__':
     beep_boop()
 
-# python beep_boop.py
